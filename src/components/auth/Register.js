@@ -1,12 +1,27 @@
-import React, { useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { useHistory } from "react-router-dom"
 import "./Login.css"
 
 export const Register = (props) => {
+    const [households, setHouseholds] = useState([])  //state needed to iterate through existing households
+    const [household, createHousehold] = useState({ name: "" }) //state to create new household
     const [user, setUser] = useState({})
     const conflictDialog = useRef()
 
     const history = useHistory()
+
+    useEffect(
+        () => {
+            fetch("http://localhost:8088/households")
+                .then(res => res.json())
+                .then(
+                    (data) => {
+                        setHouseholds(data)
+                    }
+                )
+            },
+        []
+    )
 
     const existingUserCheck = () => {
         return fetch(`http://localhost:8088/users?email=${user.email}`)
@@ -40,7 +55,7 @@ export const Register = (props) => {
     }
 
     const updateUser = (evt) => {
-        const copy = {...user}
+        const copy = { ...user }
         copy[evt.target.id] = evt.target.value
         setUser(copy)
     }
@@ -58,8 +73,8 @@ export const Register = (props) => {
                 <fieldset>
                     <label htmlFor="name"> Full Name </label>
                     <input onChange={updateUser}
-                           type="text" id="name" className="form-control"
-                           placeholder="Enter your name" required autoFocus />
+                        type="text" id="name" className="form-control"
+                        placeholder="Enter your name" required autoFocus />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="email"> Email address </label>
@@ -67,8 +82,8 @@ export const Register = (props) => {
                 </fieldset>
                 {/* <fieldset>
                     <label htmlFor="household"> Choose your household </label> */}
-                    {/* insert select form here that iterate through households (fetch those) */}
-                    {/* <input onChange={updateUser} type="email" id="household--{" className="form-control" placeholder="Email address" required />
+                {/* insert select form here that iterate through households (fetch those) */}
+                {/* <input onChange={updateUser} type="email" id="household--{" className="form-control" placeholder="Email address" required />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="createHousehold">Or create your own!</label>
