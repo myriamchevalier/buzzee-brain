@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react"
-import { useHistory } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import "./Login.css"
 
 export const Register = (props) => {
     const [households, setHouseholds] = useState([])  //state needed to iterate through existing households
-    const [household, createHousehold] = useState({ name: "" }) //state to create new household
+   // const [household, createHousehold] = useState({ name: "" }) //state to create new household
     const [user, setUser] = useState({})
     const conflictDialog = useRef()
 
@@ -60,16 +60,32 @@ export const Register = (props) => {
         setUser(copy)
     }
 
-
     return (
         <main style={{ textAlign: "center" }}>
-            <dialog className="dialog dialog--password" ref={conflictDialog}>
-                <div>Account with that email address already exists</div>
-                <button className="button--close" onClick={e => conflictDialog.current.close()}>Close</button>
-            </dialog>
+        <dialog className="dialog dialog--password" ref={conflictDialog}>
+            <div>Account with that email address already exists</div>
+            <button className="button--close" onClick={e => conflictDialog.current.close()}>Close</button>
+        </dialog>
+            <form>
+                <h1>Please Register for BuzzeeBrain</h1>
+                <h2>Select or create your household</h2>
+
+                <fieldset>
+                    <label htmlFor="household--select">
+                        <select onChange={updateUser}
+                        id="householdId" className="form-control"
+                        required >
+                        <option>Select a household</option>
+                            {households.map((household) => {
+                               return <option key={`household--${household.id}`}>{household.name}</option>
+                                })}
+                        </select>
+                    </label>
+                    <Link to="/createhousehold"><button>Create new household</button></Link>
+                </fieldset>
+            </form>
 
             <form className="form--login" onSubmit={handleRegister}>
-                <h1 className="h3 mb-3 font-weight-normal">Please Register for BuzzeeBrain</h1>
                 <fieldset>
                     <label htmlFor="name"> Full Name </label>
                     <input onChange={updateUser}
@@ -80,15 +96,6 @@ export const Register = (props) => {
                     <label htmlFor="email"> Email address </label>
                     <input onChange={updateUser} type="email" id="email" className="form-control" placeholder="Email address" required />
                 </fieldset>
-                {/* <fieldset>
-                    <label htmlFor="household"> Choose your household </label> */}
-                {/* insert select form here that iterate through households (fetch those) */}
-                {/* <input onChange={updateUser} type="email" id="household--{" className="form-control" placeholder="Email address" required />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="createHousehold">Or create your own!</label>
-                    <input onChange={updateUser} type="text" id="createHousehold" className="form-control" placeholder="New household name"  />
-                </fieldset> */}
                 <fieldset>
                     <button type="submit"> Register </button>
                 </fieldset>

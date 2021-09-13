@@ -9,8 +9,7 @@ import reportWebVitals from './reportWebVitals';
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <BuzzeeBrain>
-      </BuzzeeBrain>
+      <BuzzeeBrain />
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
