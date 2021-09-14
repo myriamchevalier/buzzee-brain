@@ -1,0 +1,26 @@
+h1 {
+    border: 2px gold solid ;
+    margin: 2rem 5rem 0rem 5rem;
+}
+
+.landing__description{
+    border: 2px gold solid ;
+    margin: 0.5rem 7rem;
+}
+
+h4{
+    border: 2px gold solid ;
+    margin: 3rem 2rem;
+}
+
+.landing__view {
+    border: 2px gold solid;
+    margin: 3rem;
+    padding: 2rem 0.5rem;
+}
+
+.landing__create {
+    border: 2px gold solid;
+    margin: 3rem;
+    padding: 2rem 0.5rem;
+}

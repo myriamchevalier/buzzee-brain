@@ -5,6 +5,7 @@ import { ApplicationViews } from "./ApplicationViews";
 import { Login } from "./auth/Login";
 import { Register } from "./auth/Register";
 import { CreateHousehold } from "./auth/CreateHousehold";
+import './BuzzeeBrain.css';
 
 
 export const BuzzeeBrain = () => (
