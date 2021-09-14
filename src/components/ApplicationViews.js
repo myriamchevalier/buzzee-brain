@@ -1,12 +1,14 @@
 import React from "react"
 import { Route } from "react-router-dom"
-import { CreateHousehold } from "./auth/CreateHousehold"
+import { LandingPage } from "./LandingPage"
+
 
 export const ApplicationViews = () => {
     return (
         <>
-            
-        
+          <Route path="/">
+                <LandingPage />
+            </Route>  
         </>
     )
 }

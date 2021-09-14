@@ -1,10 +1,11 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-// import { ApplicationViews } from "./ApplicationViews";
+import { ApplicationViews } from "./ApplicationViews";
 // import { NavBar } from "./nav/NavBar";
 import { Login } from "./auth/Login";
 import { Register } from "./auth/Register";
 import { CreateHousehold } from "./auth/CreateHousehold";
+import './BuzzeeBrain.css';
 
 
 export const BuzzeeBrain = () => (
@@ -15,8 +16,8 @@ export const BuzzeeBrain = () => (
           return (
             <>
             App here!
-              {/* <NavBar />
-              <ApplicationViews /> */}
+              {/* <NavBar /> */}
+              <ApplicationViews />
             </>
           );
         } else {
