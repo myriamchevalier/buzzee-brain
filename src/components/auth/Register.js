@@ -71,12 +71,16 @@ export const Register = (props) => {
 
                 <fieldset>
                     <label htmlFor="household--select">
-                        <select onChange={updateUser}
+                        <select onChange={ (evt) => {
+                            const copy = { ...user }
+                            copy[evt.target.id] = parseInt(evt.target.value)
+                            setUser(copy)
+                        }}
                             id="householdId" className="form-control"
                             required >
                             <option>Select a household</option>
                             {households.map((household) => {
-                                return <option key={`household--${household.id}`}>{household.name}</option>
+                                return <option key={`household--${household.id}`} value={household.id}>{household.name}</option>
                             })}
                         </select>
                     </label>
@@ -97,7 +101,7 @@ export const Register = (props) => {
                     <input onChange={updateUser} type="email" id="email" className="form-control" placeholder="Email address" required />
                 </fieldset>
                 <fieldset>
-                    <button type="submit"> Register </button>
+                    <button type="submit" onClick={handleRegister}> Register </button>
                 </fieldset>
             </form>
         </main>
