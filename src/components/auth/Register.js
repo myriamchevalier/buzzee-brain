@@ -4,7 +4,7 @@ import "./Login.css"
 
 export const Register = (props) => {
     const [households, setHouseholds] = useState([])  //state needed to iterate through existing households
-   // const [household, createHousehold] = useState({ name: "" }) //state to create new household
+    // const [household, createHousehold] = useState({ name: "" }) //state to create new household
     const [user, setUser] = useState({})
     const conflictDialog = useRef()
 
@@ -19,7 +19,7 @@ export const Register = (props) => {
                         setHouseholds(data)
                     }
                 )
-            },
+        },
         []
     )
 
@@ -62,32 +62,32 @@ export const Register = (props) => {
 
     return (
         <main style={{ textAlign: "center" }}>
-        <dialog className="dialog dialog--password" ref={conflictDialog}>
-            <div>Account with that email address already exists</div>
-            <button className="button--close" onClick={e => conflictDialog.current.close()}>Close</button>
-        </dialog>
+            <dialog className="dialog dialog--password" ref={conflictDialog}>
+                <div>Account with that email address already exists</div>
+                <button className="button--close" onClick={e => conflictDialog.current.close()}>Close</button>
+            </dialog>
             <form>
                 <h1>Please Register for BuzzeeBrain</h1>
-                <h2>Select or create your household</h2>
 
                 <fieldset>
                     <label htmlFor="household--select">
                         <select onChange={updateUser}
-                        id="householdId" className="form-control"
-                        required >
-                        <option>Select a household</option>
+                            id="householdId" className="form-control"
+                            required >
+                            <option>Select a household</option>
                             {households.map((household) => {
-                               return <option key={`household--${household.id}`}>{household.name}</option>
-                                })}
+                                return <option key={`household--${household.id}`}>{household.name}</option>
+                            })}
                         </select>
                     </label>
+                    <label htmlFor="createHousehold"> Or </label>
                     <Link to="/register/createhousehold"><button>Create new household</button></Link>
                 </fieldset>
             </form>
 
             <form className="form--login" onSubmit={handleRegister}>
                 <fieldset>
-                    <label htmlFor="name"> Full Name </label>
+                    <label htmlFor="name"> Name </label>
                     <input onChange={updateUser}
                         type="text" id="name" className="form-control"
                         placeholder="Enter your name" required autoFocus />
