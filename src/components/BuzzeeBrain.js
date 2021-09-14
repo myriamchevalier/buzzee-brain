@@ -31,7 +31,7 @@ export const BuzzeeBrain = () => (
     <Route path="/login">
       <Login />
     </Route>
-    <Route path="/register">
+    <Route exact path="/register">
       <Register />
     </Route>
     
