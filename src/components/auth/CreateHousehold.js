@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { useHistory } from "react-router"
+import { Link, useHistory } from "react-router-dom"
 
 export const CreateHousehold = () => {
     const [household, createHousehold] = useState([])
@@ -42,7 +42,7 @@ export const CreateHousehold = () => {
             {/* Submit button needs POST HTTP request */}
             <button onClick={saveHousehold}>Submit</button> 
             {/* Cancel button needs to make this view disappear. A link to /register? */}
-            <button>Cancel</button>
+            <Link to="/register"><button>Cancel</button></Link>
         </>
     )
 }
