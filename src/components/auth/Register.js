@@ -81,7 +81,7 @@ export const Register = (props) => {
                                 })}
                         </select>
                     </label>
-                    <Link to="/createhousehold"><button>Create new household</button></Link>
+                    <Link to="/register/createhousehold"><button>Create new household</button></Link>
                 </fieldset>
             </form>
 

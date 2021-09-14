@@ -25,14 +25,15 @@ export const BuzzeeBrain = () => (
       }}
     />
 
+    <Route path="/register/createhousehold">
+        <CreateHousehold />
+    </Route>
     <Route path="/login">
       <Login />
     </Route>
     <Route path="/register">
       <Register />
     </Route>
-    <Route exact path="/createhousehold">
-        <CreateHousehold />
-    </Route>
+    
   </>
 );
