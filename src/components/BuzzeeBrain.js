@@ -15,7 +15,6 @@ export const BuzzeeBrain = () => (
         if (localStorage.getItem("buzzeebrain_user")) {
           return (
             <>
-            App here!
               {/* <NavBar /> */}
               <ApplicationViews />
             </>
