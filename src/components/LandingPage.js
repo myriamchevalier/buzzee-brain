@@ -1,5 +1,7 @@
 import React from "react"
+import { Link } from "react-router-dom";
 import './LandingPage.css';
+
 
 export const LandingPage = () => {
 
@@ -13,9 +15,9 @@ export const LandingPage = () => {
         <section>
             <h4>I have x WhereBeez</h4>
 
-            <div className="landing__view">View all Chevalier Household's WhereBeez</div>
+            <Link to="./wherebeez"><div className="landing__view">View all Chevalier Household's WhereBeez</div></Link>
 
-            <div className="landing__create">Create New WhereBee</div>
+            <Link to="./wherebeez/create"><div className="landing__create">Create New WhereBee</div></Link>
 
         </section>
         </>
