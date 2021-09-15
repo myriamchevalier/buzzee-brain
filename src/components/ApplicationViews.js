@@ -15,9 +15,6 @@ export const ApplicationViews = () => {
         <Route path="/wherebeez/create">
             <WhereBeeForm />
         </Route>  
-        <Route path="/wherebeez/:whereBeeId(\d+)">
-            <WhereBee />
-        </Route>
         <Route exact path="/wherebeez">
             <WhereBeezList />
         </Route>
