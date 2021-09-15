@@ -1,0 +1,25 @@
+.wherebee--card{
+    border: black 3px solid;
+    margin: 2rem;
+}
+
+.wherebee__item{
+    border: gold 2px solid;
+    margin: 1rem 0.5rem;
+}
+.wherebee__description{
+    border: gold 2px solid;
+    margin: 1rem 0.5rem;
+}
+.wherebee__owner{
+    border: gold 2px solid;
+    margin: 1rem 0.5rem;
+}
+.wherebee__where{
+    border: gold 2px solid;
+    margin: 1rem 0.5rem;
+}
+.wherebee__updated{
+    border: gold 2px solid;
+    margin: 1rem 0.5rem;
+}
