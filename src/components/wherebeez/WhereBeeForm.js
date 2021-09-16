@@ -22,8 +22,9 @@ export const WhereBeeForm = () => {
         
     }
 
-// Need to create item AND WhereBee at the same time, so updating 2 states (see Kennels)
-// 
+// Need to create item AND WhereBee at the same time, so updating 2 states, with the item state 
+// having to interact with the WhereBee state
+// fetch promise chaining? async/await?
 
 return (
     <>
