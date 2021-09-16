@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 export const WhereBeeForm = () => {
     const [allItems, setAllItems] = useState([])
@@ -8,30 +9,67 @@ export const WhereBeeForm = () => {
     })
     const [whereBee, updateWhereBee] = useState({
         whereIs: ""
-    }) // 
+    })
+    const history = useHistory()
+    const currentUser = parseInt(localStorage.getItem("buzzeebrain_user"))
 
 
     const fetchAllItems = () => {
         fetch("http://localhost:8088/items")
         .then(res => res.json())
+        .then(
+            (data) => {
+                setAllItems(data)
+            }
+        )
     }
+
+    useEffect( () => {
+        fetchAllItems()
+    },
+    []
+    )
 
     const createWhereBee = (event) => {
         event.preventDefault()
-        const fetchOptions = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }
-        
         const newItem = {
             name: item.name,
             description: item.description
         }
-        fetch("http://localhost:8088/items", fetchOptions, {body: JSON.stringify(newItem)})
+        const fetchOptionsItem = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newItem)
+        }
+        
+        fetch("http://localhost:8088/items", fetchOptionsItem)
         .then(fetchAllItems)
-        .then((data) => setAllItems(data) )
+        .then(() => {
+            const lastIndex = allItems.length
+            const whereBeeItemId = lastIndex + 1
+
+            const newWhereBee = {
+                itemId: whereBeeItemId,
+                userId: currentUser,
+                whereIs: whereBee.whereIs,
+                lastUpdated: Date()
+            }
+            const fetchOptionsWhereBee = {
+                method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newWhereBee)
+            }
+            fetch("http://localhost:8088/whereBeez", fetchOptionsWhereBee)
+            .then(res => res.json())
+            .then(() => {
+                history.push("/wherebeez")
+            })
+
+        })
         
     }
 
@@ -79,6 +117,7 @@ return (
                     onChange={(event) => whereBeeConstructor("whereIs", event.target.value)}/>
         </fieldset>
     </form>
+    <button onClick={createWhereBee}>Submit</button>
     </>
 )
 }
