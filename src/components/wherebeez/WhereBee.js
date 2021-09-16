@@ -4,7 +4,7 @@ import './WhereBee.css';
 
 //Route for ind wherebee
 //Iterate through array of wherebeez to get info
-export const WhereBee = ({whereBee, updateWhereBeez}) => {
+export const WhereBee = ({whereBee}) => {
 
 
 
