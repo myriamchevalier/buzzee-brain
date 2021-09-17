@@ -50,11 +50,20 @@ export const WhereBeeForm = () => {
             const lastIndex = allItems.length
             const whereBeeItemId = lastIndex + 1
 
+            const date = () => {
+                let today = new Date();
+                let dd = String(today.getDate()).padStart(2, '0');
+                let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                let yyyy = today.getFullYear();
+
+                today = `${mm}/${dd}/${yyyy}`;
+                return today
+            }
             const newWhereBee = {
                 itemId: whereBeeItemId,
                 userId: currentUser,
                 whereIs: whereBee.whereIs,
-                lastUpdated: Date()
+                lastUpdated: date()
             }
             const fetchOptionsWhereBee = {
                 method: "POST",
