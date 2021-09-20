@@ -1,14 +1,16 @@
 import React, { useState } from "react";
+import { unstable_concurrentAct } from "react-dom/test-utils";
 import { useHistory } from "react-router-dom";
 import './WhereBee.css';
 
 
 export const WhereBee = ({ whereBee, fetchWhereBeez }) => {
-    
+
     const [enableUpdate, setEnableUpdate] = useState(false)
     const [whereBeeLocation, updateLocation] = useState({
         whereIs: ""
     }) //use this to track state of location
+    const currentUser = parseInt(localStorage.getItem("buzzeebrain_user"))
 
 
 
@@ -41,6 +43,13 @@ export const WhereBee = ({ whereBee, fetchWhereBeez }) => {
 
         fetch("http://localhost:8088/whereBeez", fetchOptions)
         .then(res => res.json())
+        .then(fetchWhereBeez)
+    }
+
+    const deleteWhereBee = (id) => {
+        fetch(`http://localhost:8088/wherebeez/${id}`, {
+            method: "DELETE"
+        })
         .then(fetchWhereBeez)
     }
 
@@ -93,6 +102,10 @@ export const WhereBee = ({ whereBee, fetchWhereBeez }) => {
                 <div>
                     {enableUpdate ? updateButtonsOptions :
                     <button onClick={() => setEnableUpdate(true)}>Update</button>}
+                </div>
+                <div>
+                    {currentUser === whereBee.userId ? 
+                    <button onClick={() => {deleteWhereBee(whereBee.id)}}>Delete</button> : ""} 
                 </div>
             </article>
         </>
