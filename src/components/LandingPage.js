@@ -5,9 +5,18 @@ import './LandingPage.css';
 
 export const LandingPage = () => {
     const [whereBeez, setWhereBeez] = useState([])
+    const [userHouseholds, setUserHouseholds] = useState([])
     const currentUser = parseInt(localStorage.getItem("buzzeebrain_user"))
 
 
+    useEffect(
+        () => {
+            fetch("http://localhost:8088/users?_expand=household")
+            .then(res => res.json())
+            .then( (data) => setUserHouseholds(data))
+        },
+        []
+    )
     useEffect(
         () => {
             fetch("http://localhost:8088/whereBeez?_expand=user&_expand=item&_sort=lastUpdated&_order=desc") 
@@ -37,6 +46,10 @@ export const LandingPage = () => {
     const whereBeezByUser = uniqueWhereBeez.filter((wb) => {
         return wb.userId === currentUser})
 
+    const foundUserHousehold = userHouseholds.find((userHousehold) => {
+        return userHousehold.id === currentUser
+    })
+
     return (
         <>
         <h1>My BuzzeeHive</h1>
@@ -45,11 +58,11 @@ export const LandingPage = () => {
 
         <section>
             <h4>I have {whereBeezByUser.length} WhereBeez</h4>
-
-            <Link to="./wherebeez"><div className="landing__view">View all Chevalier Household's WhereBeez</div></Link>
-
+            <section>
+            <Link to="./wherebeez"><div className="landing__view">View all {foundUserHousehold?.household?.name}'s WhereBeez</div></Link>
             <Link to="./wherebeez/create"><div className="landing__create">Create New WhereBee</div></Link>
 
+            </section>
         </section>
         </>
     )
