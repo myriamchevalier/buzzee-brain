@@ -6,14 +6,16 @@ import './WhereBee.css';
 
 export const WhereBee = ({ whereBee, fetchWhereBeez }) => {
 
-    const [enableUpdate, setEnableUpdate] = useState(false)
+    const [enableUpdate, setEnableUpdate] = useState(false)  //State for different views (update vs save or cancel update)
+
     const [whereBeeLocation, updateLocation] = useState({
         whereIs: ""
     }) //use this to track state of location
     const currentUser = parseInt(localStorage.getItem("buzzeebrain_user"))
 
 
-
+    //~~~~function invoked at Save button~~~~//
+    //~~~POSTs new whereBee with updated location and timestamp~~~~//
     const updateWherebee = () => {
         const date = () => {
             let today = new Date();
@@ -46,6 +48,7 @@ export const WhereBee = ({ whereBee, fetchWhereBeez }) => {
         .then(fetchWhereBeez)
     }
 
+    //~~~~function invoked on Delete~~~~//
     const deleteWhereBee = (id) => {
         fetch(`http://localhost:8088/wherebeez/${id}`, {
             method: "DELETE"
@@ -53,13 +56,14 @@ export const WhereBee = ({ whereBee, fetchWhereBeez }) => {
         .then(fetchWhereBeez)
     }
 
-
+    //~~~JSX to be rendered in different views~~~//
     const regularLocationDiv = (
         <div className="wherebee__where">
             <p>Location: </p>
             <p>{whereBee?.whereIs}</p>
         </div>
     )
+
     const updateLocationDiv = (
         <div className="wherebee__where">
             <p>Location: </p>
@@ -71,6 +75,7 @@ export const WhereBee = ({ whereBee, fetchWhereBeez }) => {
                     }}/>
         </div>
     )
+    
     const updateButtonsOptions = (
         <div>
             <button onClick={updateWherebee}>Save</button>

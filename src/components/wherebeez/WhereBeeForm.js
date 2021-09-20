@@ -16,20 +16,23 @@ export const WhereBeeForm = () => {
 
     const fetchAllItems = () => {
         fetch("http://localhost:8088/items")
-        .then(res => res.json())
-        .then(
-            (data) => {
-                setAllItems(data)
-            }
-        )
+            .then(res => res.json())
+            .then(
+                (data) => {
+                    setAllItems(data)
+                }
+            )
     }
 
-    useEffect( () => {
+    useEffect(() => {
         fetchAllItems()
     },
-    []
+        []
     )
 
+    //~~~~invoked on Submit~~~~//
+    //~~This function first creates an item, then fetches all items to grab the itemId,
+    //~~ then creates the WhereBee with that information.
     const createWhereBee = (event) => {
         event.preventDefault()
         const newItem = {
@@ -43,87 +46,87 @@ export const WhereBeeForm = () => {
             },
             body: JSON.stringify(newItem)
         }
-        
+
         fetch("http://localhost:8088/items", fetchOptionsItem)
-        .then(fetchAllItems)
-        .then(() => {
-            const lastIndex = allItems.length
-            const whereBeeItemId = lastIndex + 1
-
-            const date = () => {
-                let today = new Date();
-                let dd = String(today.getDate()).padStart(2, '0');
-                let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-                let yyyy = today.getFullYear();
-                let hours = today.getHours();
-                let minutes = today.getMinutes()
-
-                today = `${mm}/${dd}/${yyyy}, ${hours}:${minutes}` ;
-                return today
-            }
-            const newWhereBee = {
-                itemId: whereBeeItemId,
-                userId: currentUser,
-                whereIs: whereBee.whereIs,
-                lastUpdated: date()
-            }
-            const fetchOptionsWhereBee = {
-                method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(newWhereBee)
-            }
-            fetch("http://localhost:8088/whereBeez", fetchOptionsWhereBee)
-            .then(res => res.json())
+            .then(fetchAllItems)
             .then(() => {
-                history.push("/wherebeez")
+                const lastIndex = allItems.length
+                const whereBeeItemId = lastIndex + 1
+
+                const date = () => {
+                    let today = new Date();
+                    let dd = String(today.getDate()).padStart(2, '0');
+                    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                    let yyyy = today.getFullYear();
+                    let hours = today.getHours();
+                    let minutes = today.getMinutes()
+
+                    today = `${mm}/${dd}/${yyyy}, ${hours}:${minutes}`;
+                    return today
+                }
+                const newWhereBee = {
+                    itemId: whereBeeItemId,
+                    userId: currentUser,
+                    whereIs: whereBee.whereIs,
+                    lastUpdated: date()
+                }
+                const fetchOptionsWhereBee = {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(newWhereBee)
+                }
+                fetch("http://localhost:8088/whereBeez", fetchOptionsWhereBee)
+                    .then(res => res.json())
+                    .then(() => {
+                        history.push("/wherebeez")
+                    })
+
             })
 
-        })
-        
     }
 
-// functions below to invoke onChange
-const itemConstructor = (propertyToModify, newValue) => {
-    const copy = { ...item }
-    copy[propertyToModify] = newValue
-    updateItem(copy)
-}
+    // functions below to invoke onChange
+    const itemConstructor = (propertyToModify, newValue) => {
+        const copy = { ...item }
+        copy[propertyToModify] = newValue
+        updateItem(copy)
+    }
 
-const whereBeeConstructor = (propertyToModify, newValue) => {
-    const copy = { ...whereBee}
-    copy[propertyToModify] = newValue
-    updateWhereBee(copy)
-}
-return (
-    <>
-    <h2>Out of the BuzzeeBrain, into the WhereBee</h2>
+    const whereBeeConstructor = (propertyToModify, newValue) => {
+        const copy = { ...whereBee }
+        copy[propertyToModify] = newValue
+        updateWhereBee(copy)
+    }
+    return (
+        <>
+            <h2>Out of the BuzzeeBrain, into the WhereBee</h2>
 
-    <form>
-        <fieldset>
-            <label htmlFor="item">Item/Document</label>
-            <input  type="text" 
-                    id="item" 
-                    required autoFocus
-                    onChange={(event) => itemConstructor("name", event.target.value)}/>
-        </fieldset>
-        <fieldset>
-            <label htmlFor="description">Description</label>
-            <input  type="text"
-                    id="description"
-                    required
-                    onChange={(event) => itemConstructor("description", event.target.value)}/>
-        </fieldset>
-        <fieldset>
-            <label htmlFor="where">Where is it?</label>
-            <input  type="text"
-                    id="location"
-                    required
-                    onChange={(event) => whereBeeConstructor("whereIs", event.target.value)}/>
-        </fieldset>
-    </form>
-    <button onClick={createWhereBee}>Submit</button>
-    </>
-)
+            <form>
+                <fieldset>
+                    <label htmlFor="item">Item/Document</label>
+                    <input type="text"
+                        id="item"
+                        required autoFocus
+                        onChange={(event) => itemConstructor("name", event.target.value)} />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="description">Description</label>
+                    <input type="text"
+                        id="description"
+                        required
+                        onChange={(event) => itemConstructor("description", event.target.value)} />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="where">Where is it?</label>
+                    <input type="text"
+                        id="location"
+                        required
+                        onChange={(event) => whereBeeConstructor("whereIs", event.target.value)} />
+                </fieldset>
+            </form>
+            <button onClick={createWhereBee}>Submit</button>
+        </>
+    )
 }
