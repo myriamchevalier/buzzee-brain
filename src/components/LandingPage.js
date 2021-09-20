@@ -8,13 +8,13 @@ export const LandingPage = () => {
     const [userHouseholds, setUserHouseholds] = useState([])
     const currentUser = parseInt(localStorage.getItem("buzzeebrain_user"))
 
-
+    //~~~~~HTTP requests for fetching data and setting state~~~~~~~~//
     useEffect(
         () => {
             fetch("http://localhost:8088/users?_expand=household")
             .then(res => res.json())
             .then( (data) => setUserHouseholds(data))
-        },
+            },
         []
     )
     useEffect(
@@ -22,14 +22,13 @@ export const LandingPage = () => {
             fetch("http://localhost:8088/whereBeez?_expand=user&_expand=item&_sort=lastUpdated&_order=desc") 
             .then(res => res.json())
             .then(
-                (data) => {
-                setWhereBeez(data)
-                }
-            )
-        },
+                (data) => setWhereBeez(data))
+            },
         []
     )
 
+    //~~~~Code to build array containing only the last update of a given item~~~~//
+    //~~~~Used here to get the length of the array of a given user's WBz~~~~//
     const uniqueWhereBeez = []
     
     whereBeez.forEach((wb) => {
@@ -49,6 +48,7 @@ export const LandingPage = () => {
     const foundUserHousehold = userHouseholds.find((userHousehold) => {
         return userHousehold.id === currentUser
     })
+
 
     return (
         <>

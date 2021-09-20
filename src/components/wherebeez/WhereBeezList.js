@@ -9,33 +9,27 @@ export const WhereBeezList = () => {
     const [user, setUser] = useState({})
     const currentUser = parseInt(localStorage.getItem("buzzeebrain_user"))
 
-
+    //~~~~~Fetching and setting state for WBz and users~~~~~~//
     const whereBeezFetcher = () => {
         fetch("http://localhost:8088/whereBeez?_expand=user&_expand=item&_sort=lastUpdated&_order=desc")
             .then(res => res.json())
-            .then(
-                (data) => {
-                    setWhereBeez(data)
-                }
+            .then((data) => setWhereBeez(data)
             )
-    }
+        }
 
-    useEffect(
-        () => {
-            whereBeezFetcher()
-        },
-        []
-    )
+    useEffect(() => whereBeezFetcher(),[])
 
     useEffect(
         () => {
             fetch(`http://localhost:8088/users/${currentUser}`)
                 .then(res => res.json())
                 .then((data) => setUser(data))
-        },
+            },
         []
     )
 
+    //~~~~Code to build array containing only the last update of a given item~~~~//
+    //~~Works because HTTP request is sorted by desc order, by lastUpdated~~//
     const uniqueWhereBeez = []
     
     whereBeez.forEach((wb) => {
@@ -48,18 +42,19 @@ export const WhereBeezList = () => {
                 return uniqueWhereBeez;
             }
         })
-        
+    
+    //~~~~Code to build array containing only specified household's WBz~~~~//
     const currentHousehold = user?.householdId
     const householdWhereBeez = uniqueWhereBeez.filter((uniqueWB) => {
         return currentHousehold === uniqueWB?.user?.householdId
     })
 
-
-
+    //~~~~Array containing only user's WBz~~~~//
     const filteredWhereBeez = uniqueWhereBeez.filter((wb) => {
         return currentUser === wb.userId
     })
 
+    //~~~~~variables for storing JSX to be rendered depending on viewing state~~~~~//
     const displayAll = (
         <section className="list">
             <div className="whereBeez">
@@ -80,6 +75,8 @@ export const WhereBeezList = () => {
         </section>
     )
 
+
+    //~~~~~~~What the export function ultimately returns~~~~~//
     return (
         <>
             <h1>WhereBeez</h1>
