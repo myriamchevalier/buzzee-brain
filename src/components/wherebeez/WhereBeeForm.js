@@ -55,8 +55,10 @@ export const WhereBeeForm = () => {
                 let dd = String(today.getDate()).padStart(2, '0');
                 let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
                 let yyyy = today.getFullYear();
+                let hours = today.getHours();
+                let minutes = today.getMinutes()
 
-                today = `${mm}/${dd}/${yyyy}`;
+                today = `${mm}/${dd}/${yyyy}, ${hours}:${minutes}` ;
                 return today
             }
             const newWhereBee = {
