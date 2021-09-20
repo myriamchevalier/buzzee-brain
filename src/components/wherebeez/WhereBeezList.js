@@ -5,24 +5,48 @@ import './WhereBeezList.css'
 
 export const WhereBeezList = () =>{
     const [whereBeez, setWhereBeez] = useState([])
-    const [viewAll, setViewAll] = useState(true)   // state variable for toggling view
+    const [viewAll, setViewAll] = useState(true)  // state variable for toggling view
     
     const currentUser = parseInt(localStorage.getItem("buzzeebrain_user"))
 
+    const whereBeezFetcher = () => {
+            fetch("http://localhost:8088/whereBeez?_expand=user&_expand=item&_sort=lastUpdated&_order=desc") 
+                .then(res => res.json())
+                .then(
+                    (data) => {
+                    setWhereBeez(data)
+                    }
+                )
+            }
+    
     useEffect(
         () => {
-            fetch("http://localhost:8088/whereBeez?_expand=user&_expand=item")
-            .then(res => res.json())
-            .then(
-                (data) => {
-                    setWhereBeez(data)
-                }
-            )
+          whereBeezFetcher()
         },
         []
     )
 
-    const filteredWhereBeez = whereBeez.filter((wb) => {
+    //conditional ? 
+
+
+const uniqueWhereBeez = []
+
+whereBeez.forEach((wb) => {
+  const hasWhereBee = uniqueWhereBeez.find((uniqueWhereBee) => (
+    uniqueWhereBee.itemId === wb.itemId
+  ));
+
+  if (!hasWhereBee) {
+    uniqueWhereBeez.push(wb)
+    return uniqueWhereBeez;
+  }
+})
+
+
+
+    
+
+    const filteredWhereBeez = uniqueWhereBeez.filter((wb) => {
         return currentUser === wb.userId
     })
     
@@ -30,7 +54,7 @@ export const WhereBeezList = () =>{
         <section className="list">
             <div className="whereBeez">
             {
-                whereBeez.map(wb => <WhereBee key={wb.id} whereBee={wb} updateWhereBeez= {setWhereBeez} />)
+                uniqueWhereBeez.map(wb => <WhereBee key={wb.id} whereBee={wb} fetchWhereBeez= {whereBeezFetcher} />)
             }
             </div>
         </section>
@@ -40,7 +64,7 @@ export const WhereBeezList = () =>{
         <section className="list">
             <div className="whereBeez">
             {
-                filteredWhereBeez.map(wb => <WhereBee key={wb.id} whereBee={wb} updateWhereBeez= {setWhereBeez} />)
+                filteredWhereBeez.map(wb => <WhereBee key={wb.id} whereBee={wb} fetchWhereBeez= {whereBeezFetcher} />)
             }
             </div>
         </section>
