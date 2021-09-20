@@ -84,11 +84,6 @@ export const WhereBeeForm = () => {
         
     }
 
-// Need to create item AND WhereBee at the same time, so updating 2 states, with the item state 
-// having to interact with the WhereBee state
-// fetch promise chaining? async/await?
-
-
 // functions below to invoke onChange
 const itemConstructor = (propertyToModify, newValue) => {
     const copy = { ...item }
