@@ -5,6 +5,7 @@ import "./Login.css"
 
 export const Login = () => {
     const [email, set] = useState("")
+    const [password, setPassword] = useState("")
     const existDialog = useRef()
     const history = useHistory()
 
@@ -44,6 +45,14 @@ export const Login = () => {
                             onChange={evt => set(evt.target.value)}
                             className="form-control"
                             placeholder="Email address"
+                            required autoFocus />
+                    </fieldset>
+                    <fieldset>
+                        <label htmlFor="inputPassword"> Password </label>
+                        <input type="password"
+                            onChange={evt => setPassword(evt.target.value)}
+                            className="form-control"
+                            placeholder="Password"
                             required autoFocus />
                     </fieldset>
                     <fieldset>
