@@ -1,26 +1,41 @@
 h1 {
-    border: 2px gold solid ;
-    margin: 2rem 5rem 0rem 5rem;
+    background-color:#FDC500 ;
+    border-radius: 40%;
+    margin: 2rem 0 0 6rem;
+    padding: 2rem;
+    width: fit-content;
 }
 
 .landing__description{
-    border: 2px gold solid ;
-    margin: 0.5rem 7rem;
+    margin: 0 0 0 20rem;
 }
 
-h4{
-    border: 2px gold solid ;
-    margin: 3rem 2rem;
+h3{
+    background-color: #5C0099;
+    color: #D389FB;
+    margin: 3rem 6rem;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 40%;
+    padding: 2rem;
+
+}
+
+.landing__options {
+    display: flex;
+    flex-wrap: nowrap;
 }
 
 .landing__view {
     border: 2px gold solid;
     margin: 3rem;
     padding: 2rem 0.5rem;
+    width: fit-content;
 }
 
 .landing__create {
     border: 2px gold solid;
     margin: 3rem;
     padding: 2rem 0.5rem;
+    width: fit-content;
 }
