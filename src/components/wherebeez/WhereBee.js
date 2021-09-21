@@ -23,8 +23,8 @@ export const WhereBee = ({ whereBee, fetchWhereBeez }) => {
             let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
             let yyyy = today.getFullYear();
             let hours = today.getHours();
-            let minutes = today.getMinutes()
-            let seconds = today.getSeconds()
+            let minutes = today.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2})
+            let seconds = today.getSeconds().toLocaleString('en-US', {minimumIntegerDigits: 2})
 
             today = `${mm}/${dd}/${yyyy}, ${hours}:${minutes}:${seconds}` ;
             return today;
