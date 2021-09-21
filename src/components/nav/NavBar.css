@@ -2,4 +2,25 @@
     display: flex;
     list-style: none;
     justify-content: space-evenly;
+    background-color: #FDC500;
+    margin: 0;
+    position: relative;
+}
+
+.navbar__item {
+    background-color: #5C0099;
+    margin: 2rem 8rem;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 40%;
+    padding: 2rem;
+}
+
+.navbar__link {
+    color: white;
+    text-decoration: none;
+    font-size: 2rem;
+}
+.navbar__link:hover {
+    color: #D389FB;
 }

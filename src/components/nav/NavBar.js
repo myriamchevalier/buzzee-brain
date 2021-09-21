@@ -6,20 +6,26 @@ export const NavBar = () => {
     return (
         <>
             <ul className="navbar">
-                <li className="navbar__item">
-                    <Link className="navbar__link" to="/">Home</Link>
-                </li>
-                <li className="navbar__item">
-                    <Link className="navbar__link" to="/wherebeez">WhereBeez</Link>
-                </li>
-                <li className="navbar__item">
-                    <Link className="navbar__link" to="#"
-                        onClick={
-                            () => {
-                                localStorage.removeItem("buzzeebrain_user")
-                            }
-                        }>Logout</Link>
-                </li>
+                <div className="navbar__item">
+                    <li>
+                        <Link className="navbar__link" to="/">Home</Link>
+                    </li>
+                </div>
+                <div className="navbar__item">
+                    <li>
+                        <Link className="navbar__link" to="/wherebeez">WhereBeez</Link>
+                    </li>
+                </div>
+                <div className="navbar__item">
+                    <li>
+                        <Link className="navbar__link" to="#"
+                            onClick={
+                                () => {
+                                    localStorage.removeItem("buzzeebrain_user")
+                                }
+                            }>Logout</Link>
+                    </li>
+                </div>
             </ul>
         </>
     )

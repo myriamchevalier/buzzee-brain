@@ -55,14 +55,14 @@ export const LandingPage = () => {
         <h1>{foundUserHousehold?.name}'s BuzzeeHive</h1>
 
         <div className="landing__description">Track your important items/documents and free your BuzzeeBrain</div>
+            
+        <h3>I have {whereBeezByUser.length} WhereBeez</h3>
 
         <section className="landing__options">
-            <h3>I have {whereBeezByUser.length} WhereBeez</h3>
-            <section>
+            
             <Link to="./wherebeez"><div className="landing__view">View all {foundUserHousehold?.household?.name}'s WhereBeez</div></Link>
             <Link to="./wherebeez/create"><div className="landing__create">Create New WhereBee</div></Link>
 
-            </section>
         </section>
         </>
     )
