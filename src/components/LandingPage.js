@@ -60,7 +60,11 @@ export const LandingPage = () => {
 
         <section className="landing__options">
             
-            <Link to="./wherebeez"><div className="landing__view">View all {foundUserHousehold?.household?.name}'s WhereBeez</div></Link>
+            <Link to="./wherebeez" className="landing__view">
+                <div className="landing__viewtext">
+                    View all {foundUserHousehold?.household?.name}'s WhereBeez
+                </div>
+            </Link>
             <Link to="./wherebeez/create"><div className="landing__create">Create New WhereBee</div></Link>
 
         </section>

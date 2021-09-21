@@ -25,12 +25,21 @@ h3{
 }
 
 .landing__view {
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    display: flex;
     background-color:#FDC500 ;
-    border-radius: 40%;
     margin: 2rem 0 0 6rem;
     padding: 2rem;
-    width: fit-content;
-    align-self: flex-end;
+    width: 300px;
+    height: 280px;
+    align-items: center;
+    text-decoration: none;
+}
+
+.landing__viewtext {
+    color: black;
+    font-size: 1.5rem;
+    text-align:center;
 }
 
 .landing__create {
