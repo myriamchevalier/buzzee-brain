@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { BuzzeeBrain } from './components/BuzzeeBrain';
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 import reportWebVitals from './reportWebVitals';
 
