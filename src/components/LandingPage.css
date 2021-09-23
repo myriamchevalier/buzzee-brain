@@ -1,37 +1,38 @@
-h1 {
+
+
+.landing__title {
     background-color:#FDC500 ;
     border-radius: 40%;
-    margin: 2rem 0 0 6rem;
+    margin: 2rem 0 0 5rem;
     padding: 2rem;
     width: fit-content;
+    font-size: 2rem;
 }
 
 .landing__description{
     margin: 0 0 0 20rem;
 }
 
-h3{
+.landing__numbers{
     background-color: #5C0099;
     color: #D389FB;
-    margin: 3rem 6rem;
+    margin: auto;
     width: fit-content;
     height: fit-content;
     border-radius: 40%;
     padding: 2rem;
+    font-size: 1.5rem;
 }
 
 .landing__options {
     display: flex;
+    justify-content: space-around;
 }
 
 .landing__view {
-    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
     display: flex;
-    background-color:#FDC500 ;
-    margin: 2rem 0 0 6rem;
-    padding: 2rem;
-    width: 300px;
-    height: 280px;
+    margin: 2rem 0 0 2rem;
+    padding: 4.5rem;
     align-items: center;
     text-decoration: none;
 }
@@ -45,9 +46,22 @@ h3{
 .landing__create {
     background-color: #5C0099;
     color: #D389FB;
-    margin: 3rem 6rem;
+    margin: 6rem 6rem;
     width: fit-content;
     height: fit-content;
     border-radius: 40%;
     padding: 2rem;
 }
+
+.card-img-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-title{
+    text-align: center;
+    font-size: 1.75rem;
+    color: black;
+}
+

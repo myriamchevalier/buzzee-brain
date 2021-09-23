@@ -9,11 +9,11 @@
 
 .navbar__item {
     background-color: #5C0099;
-    margin: 2rem 8rem;
+    margin: 1rem;
     width: fit-content;
     height: fit-content;
     border-radius: 40%;
-    padding: 2rem;
+    padding: 1rem;
 }
 
 .navbar__link {
