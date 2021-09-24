@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import { CardGroup, FormGroup, Input, Label } from "reactstrap"
 import { WhereBee } from "./WhereBee"
 import './WhereBeezList.css'
 
@@ -56,36 +57,38 @@ export const WhereBeezList = () => {
 
     //~~~~~variables for storing JSX to be rendered depending on viewing state~~~~~//
     const displayAll = (
-        <section className="list">
-            <div className="whereBeez">
+       
+                <CardGroup className="list">
                 {
                     householdWhereBeez  .map(wb => <WhereBee key={wb.id} whereBee={wb} fetchWhereBeez={whereBeezFetcher} />)
                 } 
-            </div>
-        </section>
+                </CardGroup>
+            
+       
     )
 
     const displayMine = (
-        <section className="list">
-            <div className="whereBeez">
+        <CardGroup className="list">
                 {
                     filteredWhereBeez.map(wb => <WhereBee key={wb.id} whereBee={wb} fetchWhereBeez={whereBeezFetcher} />)
                 }
-            </div>
-        </section>
+        </CardGroup>
     )
 
 
     //~~~~~~~What the export function ultimately returns~~~~~//
     return (
         <>
-            <h1>WhereBeez</h1>
-            <section className="toggle--view">
-                <input type="radio" name="viewChange" onChange={() => { setViewAll(false) }} /> Show My WhereBeez Only
-                <input type="radio" name="viewChange" onChange={() => { setViewAll(true) }} /> Show All WhereBeez
-
-                <Link to="/wherebeez/create"><div>Create New WhereBee</div></Link>
-            </section>
+            <h1 className="wherebeez__title">WhereBeez</h1>
+            <FormGroup className="view">
+                <Label>
+                <Input type="radio" name="viewChange" onChange={() => { setViewAll(false) }} /> Show My WhereBeez Only
+                </Label>
+                <Label>
+                <Input type="radio" name="viewChange" onChange={() => { setViewAll(true) }} /> Show All WhereBeez
+                </Label>
+            </FormGroup>
+                <Link to="/wherebeez/create" className="create__link" ><div className="create__div">Create New WhereBee</div></Link>
 
             {viewAll ? displayAll : displayMine}
 

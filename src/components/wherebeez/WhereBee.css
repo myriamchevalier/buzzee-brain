@@ -1,25 +1,18 @@
-.wherebee--card{
-    border: black 3px solid;
-    margin: 2rem;
+
+.wherebee__card{
+    width: 300px;
 }
 
-.wherebee__item{
-    border: gold 2px solid;
-    margin: 1rem 0.5rem;
+.buttons {
+    display: flex;
+    justify-content: space-around;
 }
-.wherebee__description{
-    border: gold 2px solid;
-    margin: 1rem 0.5rem;
+.button {
+    margin: 1rem;
 }
-.wherebee__owner{
-    border: gold 2px solid;
-    margin: 1rem 0.5rem;
+.item__name {
+    font-size: 1.5rem;
 }
-.wherebee__where{
-    border: gold 2px solid;
-    margin: 1rem 0.5rem;
-}
-.wherebee__updated{
-    border: gold 2px solid;
-    margin: 1rem 0.5rem;
+.item__update {
+    margin-top: 1rem;
 }

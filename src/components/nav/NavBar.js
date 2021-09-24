@@ -5,7 +5,7 @@ import './NavBar.css'
 export const NavBar = () => {
     return (
         <>
-            <ul className="navbar">
+            <ul className="navbar__override">
                 <div className="navbar__item">
                     <li>
                         <Link className="navbar__link" to="/">Home</Link>
