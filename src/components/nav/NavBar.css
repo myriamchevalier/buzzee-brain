@@ -1,7 +1,7 @@
-.navbar{
+.navbar__override{
     display: flex;
     list-style: none;
-    justify-content: space-evenly;
+    justify-content: space-around;
     background-color: #FDC500;
     margin: 0;
     position: relative;
