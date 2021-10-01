@@ -3,3 +3,8 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
+
+.toggle__view {
+    display: flex;
+    justify-content: space-around;
+}

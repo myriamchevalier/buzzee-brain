@@ -86,7 +86,7 @@ export const WhereBee = ({ whereBee, fetchWhereBeez }) => {
                 <Card.Img variant="top" src="https://clipartspub.com/images/bee-clipart-transparent-background-9.png" />
                 <Card.Body style={{backgroundColor:'rgb(255, 213, 0, 0.55)'}}>
                     <Card.Title style={{ fontSize: '1.5rem' }}>WhereBee That Thing?</Card.Title>
-                    <Card.Title>{whereBee?.item?.name}</Card.Title>
+                    <Card.Title style={{textAlign: 'start'}}>{whereBee?.item?.name}</Card.Title>
                     <Card.Subtitle style={{ color: 'black' }}>{whereBee?.item?.description}</Card.Subtitle>
                     <Card.Text style={{marginTop: '1rem'}}>
                         Owner: {whereBee?.user?.name}

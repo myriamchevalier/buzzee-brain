@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { InputGroup } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { WhereBee } from "./WhereBee"
 import './WhereBeezList.css'
@@ -37,18 +38,19 @@ export const WhereBeezList = () => {
     )
 
     const uniqueWhereBeez = []
-    
+
     whereBeez.forEach((wb) => {
         const hasWhereBee = uniqueWhereBeez.find((uniqueWhereBee) => {
-            return uniqueWhereBee.itemId === wb.itemId}
-            );
-            
-            if (!hasWhereBee) {
-                uniqueWhereBeez.push(wb)
-                return uniqueWhereBeez;
-            }
-        })
-        
+            return uniqueWhereBee.itemId === wb.itemId
+        }
+        );
+
+        if (!hasWhereBee) {
+            uniqueWhereBeez.push(wb)
+            return uniqueWhereBeez;
+        }
+    })
+
     const currentHousehold = user?.householdId
     const householdWhereBeez = uniqueWhereBeez.filter((uniqueWB) => {
         return currentHousehold === uniqueWB?.user?.householdId
@@ -64,8 +66,8 @@ export const WhereBeezList = () => {
         <section className="list">
             <div className="whereBeez">
                 {
-                    householdWhereBeez  .map(wb => <WhereBee key={wb.id} whereBee={wb} fetchWhereBeez={whereBeezFetcher} />)
-                } 
+                    householdWhereBeez.map(wb => <WhereBee key={wb.id} whereBee={wb} fetchWhereBeez={whereBeezFetcher} />)
+                }
             </div>
         </section>
     )
@@ -83,12 +85,18 @@ export const WhereBeezList = () => {
     return (
         <>
             <h1>WhereBeez</h1>
-            <section className="toggle--view">
-                <input type="radio" name="viewChange" onChange={() => { setViewAll(false) }} /> Show My WhereBeez Only
-                <input type="radio" name="viewChange" onChange={() => { setViewAll(true) }} /> Show All WhereBeez
+            <section className="toggle__view">
+                <InputGroup>
+                    <InputGroup.Radio label="Show My WhereBeez Only" name="viewChange" onChange={() => { setViewAll(false) }} />
+                    <InputGroup.Text>Show My WhereBeez Only</InputGroup.Text>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Radio label="Show All WhereBeez " type="radio" name="viewChange" onChange={() => { setViewAll(true) }} />
+                    <InputGroup.Text>Show All WhereBeez</InputGroup.Text>
+                </InputGroup>
 
-                <Link to="/wherebeez/create"><div>Create New WhereBee</div></Link>
             </section>
+            <Link to="/wherebeez/create"><div>Create New WhereBee</div></Link>
 
             {viewAll ? displayAll : displayMine}
 
