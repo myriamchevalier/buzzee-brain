@@ -8,3 +8,9 @@
     display: flex;
     justify-content: space-around;
 }
+
+.title {
+    text-align: center;
+    margin: 0;
+    padding: 1rem;
+}

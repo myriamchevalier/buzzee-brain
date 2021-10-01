@@ -84,14 +84,14 @@ export const WhereBeezList = () => {
 
     return (
         <>
-            <h1>WhereBeez</h1>
+            <h1 className="title">WhereBeez</h1>
             <section className="toggle__view">
                 <InputGroup>
                     <InputGroup.Radio label="Show My WhereBeez Only" name="viewChange" onChange={() => { setViewAll(false) }} />
                     <InputGroup.Text>Show My WhereBeez Only</InputGroup.Text>
                 </InputGroup>
                 <InputGroup>
-                    <InputGroup.Radio label="Show All WhereBeez " type="radio" name="viewChange" onChange={() => { setViewAll(true) }} />
+                    <InputGroup.Radio label="Show All WhereBeez " tname="viewChange" onChange={() => { setViewAll(true) }} />
                     <InputGroup.Text>Show All WhereBeez</InputGroup.Text>
                 </InputGroup>
 
