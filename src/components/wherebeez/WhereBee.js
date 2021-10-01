@@ -1,24 +1,19 @@
+
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import { Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText, Button, CardDeck, ButtonGroup, CardGroup, Input } from "reactstrap";
+import { Card, Button, ButtonToolbar, ButtonGroup } from "react-bootstrap";
 import './WhereBee.css';
-
-
-
 
 
 export const WhereBee = ({ whereBee, fetchWhereBeez }) => {
 
-    const [enableUpdate, setEnableUpdate] = useState(false)  //State for different views (update vs save or cancel update)
-
+    const [enableUpdate, setEnableUpdate] = useState(false)
     const [whereBeeLocation, updateLocation] = useState({
         whereIs: ""
     }) //use this to track state of location
     const currentUser = parseInt(localStorage.getItem("buzzeebrain_user"))
 
 
-    //~~~~function invoked at Save button~~~~//
-    //~~~POSTs new whereBee with updated location and timestamp~~~~//
+
     const updateWherebee = () => {
         const date = () => {
             let today = new Date();
@@ -26,8 +21,8 @@ export const WhereBee = ({ whereBee, fetchWhereBeez }) => {
             let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
             let yyyy = today.getFullYear();
             let hours = today.getHours();
-            let minutes = today.getMinutes().toLocaleString('en-US', { minimumIntegerDigits: 2 })
-            let seconds = today.getSeconds().toLocaleString('en-US', { minimumIntegerDigits: 2 })
+            let minutes = today.getMinutes()
+            let seconds = today.getSeconds()
 
             today = `${mm}/${dd}/${yyyy}, ${hours}:${minutes}:${seconds}`;
             return today;
@@ -51,61 +46,70 @@ export const WhereBee = ({ whereBee, fetchWhereBeez }) => {
             .then(fetchWhereBeez)
     }
 
-    //~~~~function invoked on Delete~~~~//
     const deleteWhereBee = (id) => {
-        fetch(`http://localhost:8088/wherebeez/${id}`, {
+        fetch(`http://localhost:8088/items/${whereBee.itemId}`, {
             method: "DELETE"
         })
             .then(fetchWhereBeez)
     }
 
-    //~~~JSX to be rendered in different views~~~//
-    const regularLocationDiv = <CardText>Location: {whereBee?.whereIs}</CardText>
 
-    const updateLocationDiv = (
-        <Input type="text" placeholder={whereBee?.whereIs}
-            onChange={(event) => {
-                const copy = { ...whereBeeLocation }
-                copy.whereIs = event.target.value
-                updateLocation(copy)
-            }} />
+    const regularLocationDiv = (
+        <Card.Text>
+            Location:
+            {whereBee?.whereIs}
+        </Card.Text>
     )
-
+    const updateLocationDiv = (
+        <Card.Text>
+            Location:
+            <input type="text" placeholder={whereBee?.whereIs}
+                onChange={(event) => {
+                    const copy = { ...whereBeeLocation }
+                    copy.whereIs = event.target.value
+                    updateLocation(copy)
+                }} />
+        </Card.Text>
+    )
     const updateButtonsOptions = (
-        <CardText>
-            <Button onClick={updateWherebee}>Save</Button>
-            <Button onClick={() => setEnableUpdate(false)}>Cancel</Button>
-        </CardText>
+       <>
+            <Button style={{backgroundColor:'#FDC500', borderColor:'#FDC500', color:'black'}}
+            onClick={updateWherebee}>Save</Button>
+            <Button style={{backgroundColor:'#5C0099', borderColor:'#5C0099', color:'white'}}
+            onClick={() => setEnableUpdate(false)}>Cancel</Button>
+        </>
     )
 
     return (
         <>
-            <div>
-                <Card className="wherebee__card" >
-                    <CardImg top
-                        width="100%"
-                        src="https://clipartspub.com/images/bee-clipart-transparent-background-9.png"
-                        alt="Flying bee" />
+            <Card  style={{ width: '18rem', bordercolor:'#FDC500' }}>
+                <Card.Img variant="top" src="https://clipartspub.com/images/bee-clipart-transparent-background-9.png" />
+                <Card.Body style={{backgroundColor:'rgb(255, 213, 0, 0.55)'}}>
+                    <Card.Title style={{ fontSize: '1.5rem' }}>WhereBee That Thing?</Card.Title>
+                    <Card.Title>{whereBee?.item?.name}</Card.Title>
+                    <Card.Subtitle style={{ color: 'black' }}>{whereBee?.item?.description}</Card.Subtitle>
+                    <Card.Text style={{marginTop: '1rem'}}>
+                        Owner: {whereBee?.user?.name}
+                    </Card.Text>
 
-                    <CardTitle className="whereBee__title">WhereBee That Thing?</CardTitle>
-                    <CardBody>
-                        <CardSubtitle className="item__name">{whereBee?.item?.name}</CardSubtitle>
-                        <CardText>{whereBee?.item?.description}</CardText>
-                        <CardText>Owner: {whereBee?.user?.name}</CardText>
-                        <CardGroup>{enableUpdate ? updateLocationDiv : regularLocationDiv} </CardGroup>
-                        <CardText className="item__update">
-                        <small className="text-muted">Last updated on {whereBee.lastUpdated}</small>
-                        </CardText>
-                        
-                        <CardText className="buttons">{enableUpdate ? updateButtonsOptions :
-                            <Button className="button" 
-                            onClick={() => setEnableUpdate(true)}>Update</Button>}
-                        {currentUser === whereBee.userId ?
-                            <Button className="button" onClick={() => { deleteWhereBee(whereBee.id) }}>Delete</Button> : ""} 
-                        </CardText>
-                    </CardBody>
-                </Card>
-            </div>
+                    {enableUpdate ? updateLocationDiv : regularLocationDiv}
+
+                    <Card.Text>
+                        Last updated: {whereBee.lastUpdated}
+                    </Card.Text>
+                    <ButtonToolbar>
+                    {enableUpdate ? updateButtonsOptions :
+                        <Button style={{backgroundColor:'#FDC500', borderColor:'#FDC500', color:'black'}}
+                        onClick={() => setEnableUpdate(true)}>Update</Button>}
+
+
+                    {currentUser === whereBee.userId && !enableUpdate ?
+                        <Button style={{backgroundColor:'#D389FB', borderColor:'#D389FB', color:'black'}}
+                        onClick={() => { deleteWhereBee(whereBee.id) }}>Delete</Button> : ""}
+                    </ButtonToolbar>
+                </Card.Body>
+            </Card>
+
         </>
     )
 }
