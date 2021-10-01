@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { BuzzeeBrain } from './components/BuzzeeBrain';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './custom.scss';
 
 
 import reportWebVitals from './reportWebVitals';

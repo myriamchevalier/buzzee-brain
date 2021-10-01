@@ -1,32 +1,5 @@
-.wherebeez__title{
-    background-color:#FDC500 ;
-    border-radius: 40%;
-    margin: 2rem;
-    font-size: 2rem;
-    text-align: center;
-}
-
-.list{
+.whereBeez {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
-    margin: 1rem;
-}
-.view {
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.create__link {
-    text-decoration: none;
-}
-.create__div {
-    background-color: #D389FB;
-    color:#5C0099;
-    width: fit-content;
-    border-radius: 35%;
-    font-size: 1.25rem;
-    padding: 1rem;
-    text-align: center;
-    align-self: center;
-    margin: auto;
 }

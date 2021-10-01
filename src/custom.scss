@@ -1,0 +1,20 @@
+// Override default variables before the import
+$body-bg: rgb(255, 255, 255);
+
+// Import Bootstrap and its default variables
+@import '~bootstrap/scss/bootstrap.scss';
+
+.btn-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.btn-group{
+width: 75%;
+}
+.btn-primary {
+    font-size: 1.25rem;
+}
+.card {
+    border:#FDC500 solid 1px;
+}
