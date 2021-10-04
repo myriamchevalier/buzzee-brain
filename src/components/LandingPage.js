@@ -57,14 +57,12 @@ export const LandingPage = () => {
         <>
             <h1 className="landing__title">{foundUserHousehold?.name}'s BuzzeeHive</h1>
 
-            <div className="landing__description">Track your important items/documents and free your BuzzeeBrain</div>
-
             <h3 className="landing__numbers">I have {whereBeezByUser.length} WhereBeez</h3>
 
             <section className="landing__options">
 
                 <Link to="./wherebeez" className="landing__view" >
-                    <div className="card bg-white border border-white" style={{width:'400px'}}>
+                    <div className="card bg-white border border-white" style={{width:'300px'}}>
                         <img src={beehive} className="card-img" alt="beehive" />
                         <div className="card-img-overlay">
                             <h5 className="card-title">View all {foundUserHousehold?.household?.name}'s WhereBeez</h5>
@@ -73,7 +71,7 @@ export const LandingPage = () => {
         
                 </Link>
                 <Link to="./wherebeez/create">
-                <div className="card bg-white border border-white" style={{width:'400px'}}>
+                <div className="card bg-white border border-white" style={{width:'300px'}}>
                         <img src={beehive} className="card-img" alt="beehive" />
                         <div className="card-img-overlay">
                             <h5 className="card-title">Create New WhereBee</h5>

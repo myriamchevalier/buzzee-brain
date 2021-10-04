@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { FormControl, Form } from "react-bootstrap";
+import './WhereBeeForm.css'
 
 export const WhereBeeForm = () => {
     const [allItems, setAllItems] = useState([])
@@ -104,29 +106,29 @@ export const WhereBeeForm = () => {
         <>
             <h2>Out of the BuzzeeBrain, into the WhereBee</h2>
 
-            <form>
-                <fieldset>
-                    <label htmlFor="item">Item/Document</label>
-                    <input type="text"
+            <Form style={{width: '500px'}}> 
+                <Form.Group>
+                    <Form.Label htmlFor="item">Item/Document</Form.Label>
+                    <Form.Control type="text"
                         id="item"
                         required autoFocus
                         onChange={(event) => itemConstructor("name", event.target.value)} />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="description">Description</label>
-                    <input type="text"
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label htmlFor="description">Description</Form.Label>
+                    <Form.Control type="text"
                         id="description"
                         required
                         onChange={(event) => itemConstructor("description", event.target.value)} />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="where">Where is it?</label>
-                    <input type="text"
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label htmlFor="where">Where is it?</Form.Label>
+                    <Form.Control type="text"
                         id="location"
                         required
                         onChange={(event) => whereBeeConstructor("whereIs", event.target.value)} />
-                </fieldset>
-            </form>
+                </Form.Group>
+            </Form>
             <button onClick={createWhereBee}>Submit</button>
         </>
     )

@@ -3,6 +3,7 @@ import { InputGroup } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { WhereBee } from "./WhereBee"
 import './WhereBeezList.css'
+import beehive from './Beehive2.png';
 
 export const WhereBeezList = () => {
     const [whereBeez, setWhereBeez] = useState([])
@@ -84,19 +85,27 @@ export const WhereBeezList = () => {
 
     return (
         <>
-            <h1 className="title">WhereBeez</h1>
+            <h1 className="wherebeez__title">WhereBeez</h1>
             <section className="toggle__view">
-                <InputGroup>
-                    <InputGroup.Radio label="Show My WhereBeez Only" name="viewChange" onChange={() => { setViewAll(false) }} />
-                    <InputGroup.Text>Show My WhereBeez Only</InputGroup.Text>
-                </InputGroup>
-                <InputGroup>
-                    <InputGroup.Radio label="Show All WhereBeez " tname="viewChange" onChange={() => { setViewAll(true) }} />
-                    <InputGroup.Text>Show All WhereBeez</InputGroup.Text>
-                </InputGroup>
-
+                <div>
+                    <input style={{fontSize: '1.5rem'}} type="radio" label="Show My WhereBeez Only" name="viewChange" onChange={() => { setViewAll(false) }} />
+                    Show My WhereBeez Only
+                </div>
+                <div>
+                    <input style={{fontSize: '1.5rem'}} type="radio" label="Show All WhereBeez " name="viewChange" onChange={() => { setViewAll(true) }} />
+                    Show All WhereBeez
+                </div>
             </section>
-            <Link to="/wherebeez/create"><div>Create New WhereBee</div></Link>
+
+            <Link to="./wherebeez/create">
+                <div className="card bg-white border border-white" style={{width:'150px'}}>
+                        <img src={beehive} className="card-img" alt="beehive" />
+                        <div className="card-img-overlay">
+                            <h5 className="card-title">Create New WhereBee</h5>
+                        </div>
+                    </div>
+
+                </Link>
 
             {viewAll ? displayAll : displayMine}
 

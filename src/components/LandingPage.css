@@ -1,4 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 
+body{
+    font-family: 'Patrick Hand', cursive;
+}
 
 .landing__title {
     background-color:#FDC500 ;
@@ -9,14 +13,12 @@
     font-size: 2rem;
 }
 
-.landing__description{
-    margin: 0 0 0 20rem;
-}
+
 
 .landing__numbers{
     background-color: #5C0099;
     color: #D389FB;
-    margin: auto;
+    margin: 1.5rem 8rem;
     width: fit-content;
     height: fit-content;
     border-radius: 40%;
