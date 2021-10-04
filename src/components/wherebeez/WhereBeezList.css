@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
+body{
+    font-family: 'Patrick Hand', cursive;
+}
+
+.whereBeez {
+    display: flex;
+    justify-content: space-around;
+}
 .wherebeez__title{
     background-color:#FDC500 ;
     border-radius: 40%;
@@ -15,7 +25,10 @@
     display: flex;
     justify-content: space-evenly;
 }
-
+.create {
+    display: flex;
+    justify-content: center;
+}
 .create__link {
     text-decoration: none;
 }
@@ -29,4 +42,11 @@
     text-align: center;
     align-self: center;
     margin: auto;
+}
+
+.toggle__view{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    font-size: 1.75rem;
 }

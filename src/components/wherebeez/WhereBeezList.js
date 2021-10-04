@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react"
+import { InputGroup } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { WhereBee } from "./WhereBee"
 import './WhereBeezList.css'
+import beehive from './Beehive2.png';
 
 export const WhereBeezList = () => {
     const [whereBeez, setWhereBeez] = useState([])
@@ -37,18 +39,19 @@ export const WhereBeezList = () => {
     )
 
     const uniqueWhereBeez = []
-    
+
     whereBeez.forEach((wb) => {
         const hasWhereBee = uniqueWhereBeez.find((uniqueWhereBee) => {
-            return uniqueWhereBee.itemId === wb.itemId}
-            );
-            
-            if (!hasWhereBee) {
-                uniqueWhereBeez.push(wb)
-                return uniqueWhereBeez;
-            }
-        })
-        
+            return uniqueWhereBee.itemId === wb.itemId
+        }
+        );
+
+        if (!hasWhereBee) {
+            uniqueWhereBeez.push(wb)
+            return uniqueWhereBeez;
+        }
+    })
+
     const currentHousehold = user?.householdId
     const householdWhereBeez = uniqueWhereBeez.filter((uniqueWB) => {
         return currentHousehold === uniqueWB?.user?.householdId
@@ -61,17 +64,17 @@ export const WhereBeezList = () => {
     })
 
     const displayAll = (
-        <section className="list">
+        <section >
             <div className="whereBeez">
                 {
-                    householdWhereBeez  .map(wb => <WhereBee key={wb.id} whereBee={wb} fetchWhereBeez={whereBeezFetcher} />)
-                } 
+                    householdWhereBeez.map(wb => <WhereBee key={wb.id} whereBee={wb} fetchWhereBeez={whereBeezFetcher} />)
+                }
             </div>
         </section>
     )
 
     const displayMine = (
-        <section className="list">
+        <section >
             <div className="whereBeez">
                 {
                     filteredWhereBeez.map(wb => <WhereBee key={wb.id} whereBee={wb} fetchWhereBeez={whereBeezFetcher} />)
@@ -82,14 +85,28 @@ export const WhereBeezList = () => {
 
     return (
         <>
-            <h1>WhereBeez</h1>
-            <section className="toggle--view">
-                <input type="radio" name="viewChange" onChange={() => { setViewAll(false) }} /> Show My WhereBeez Only
-                <input type="radio" name="viewChange" onChange={() => { setViewAll(true) }} /> Show All WhereBeez
-
-                <Link to="/wherebeez/create"><div>Create New WhereBee</div></Link>
+            <h1 className="wherebeez__title">WhereBeez</h1>
+            <section className="toggle__view">
+                <div>
+                    <input type="radio" label="Show My WhereBeez Only" name="viewChange" onChange={() => { setViewAll(false) }} />
+                    Show My WhereBeez Only
+                </div>
+                <div>
+                    <input type="radio" label="Show All WhereBeez " name="viewChange" onChange={() => { setViewAll(true) }} />
+                    Show All WhereBeez
+                </div>
             </section>
+            <section className="create">
+            <Link to="./wherebeez/create">
+                <div className="card bg-white border border-white" style={{width:'200px'}}>
+                        <img src={beehive} className="card-img" alt="beehive" />
+                        <div className="card-img-overlay">
+                            <h5 className="card-title">Create New WhereBee</h5>
+                        </div>
+                    </div>
 
+                </Link>
+                </section>
             {viewAll ? displayAll : displayMine}
 
         </>
