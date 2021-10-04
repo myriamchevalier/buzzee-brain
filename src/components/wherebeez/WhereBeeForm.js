@@ -104,6 +104,7 @@ export const WhereBeeForm = () => {
     }
     return (
         <>
+        <section className="bg-img">
             <h2 className="form__title">Out of the BuzzeeBrain, into the WhereBee</h2>
             <section className="form__placement">   
             <Form style={{width: '500px', marginLeft: '1rem'}}> 
@@ -130,6 +131,7 @@ export const WhereBeeForm = () => {
                 </Form.Group>
             </Form>
             <Button style={{backgroundColor:'#D389FB', borderColor:'#D389FB', color:'black', margin: '1rem'}}onClick={createWhereBee}>Submit</Button>
+            </section>
             </section>
         </>
     )

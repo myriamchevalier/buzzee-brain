@@ -5,8 +5,8 @@ body{
 }
 
 .form__title {
-    margin: 1rem;
-    padding-left: 1rem;
+    margin: 0;
+    padding: 3.5rem;
 }
 
 .form__placement {
