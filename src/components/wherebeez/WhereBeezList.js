@@ -88,17 +88,17 @@ export const WhereBeezList = () => {
             <h1 className="wherebeez__title">WhereBeez</h1>
             <section className="toggle__view">
                 <div>
-                    <input style={{fontSize: '1.5rem'}} type="radio" label="Show My WhereBeez Only" name="viewChange" onChange={() => { setViewAll(false) }} />
+                    <input type="radio" label="Show My WhereBeez Only" name="viewChange" onChange={() => { setViewAll(false) }} />
                     Show My WhereBeez Only
                 </div>
                 <div>
-                    <input style={{fontSize: '1.5rem'}} type="radio" label="Show All WhereBeez " name="viewChange" onChange={() => { setViewAll(true) }} />
+                    <input type="radio" label="Show All WhereBeez " name="viewChange" onChange={() => { setViewAll(true) }} />
                     Show All WhereBeez
                 </div>
             </section>
-
+            <section className="create">
             <Link to="./wherebeez/create">
-                <div className="card bg-white border border-white" style={{width:'150px'}}>
+                <div className="card bg-white border border-white" style={{width:'200px'}}>
                         <img src={beehive} className="card-img" alt="beehive" />
                         <div className="card-img-overlay">
                             <h5 className="card-title">Create New WhereBee</h5>
@@ -106,7 +106,7 @@ export const WhereBeezList = () => {
                     </div>
 
                 </Link>
-
+                </section>
             {viewAll ? displayAll : displayMine}
 
         </>

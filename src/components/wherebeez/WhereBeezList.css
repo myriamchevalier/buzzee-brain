@@ -25,7 +25,10 @@ body{
     display: flex;
     justify-content: space-evenly;
 }
-
+.create {
+    display: flex;
+    justify-content: center;
+}
 .create__link {
     text-decoration: none;
 }
@@ -45,5 +48,5 @@ body{
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    font-size: 1.25rem;
+    font-size: 1.75rem;
 }

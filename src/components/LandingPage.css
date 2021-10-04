@@ -6,7 +6,7 @@ body{
 }
 .bg-img{
     background-image: url('./beezBack3.webp');
-    background-size: contain;
+    background-size: cover;
     height: 100vh;
 }
 .landing__top {
