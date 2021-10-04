@@ -64,7 +64,7 @@ export const WhereBeezList = () => {
     })
 
     const displayAll = (
-        <section className="list">
+        <section >
             <div className="whereBeez">
                 {
                     householdWhereBeez.map(wb => <WhereBee key={wb.id} whereBee={wb} fetchWhereBeez={whereBeezFetcher} />)
@@ -74,7 +74,7 @@ export const WhereBeezList = () => {
     )
 
     const displayMine = (
-        <section className="list">
+        <section >
             <div className="whereBeez">
                 {
                     filteredWhereBeez.map(wb => <WhereBee key={wb.id} whereBee={wb} fetchWhereBeez={whereBeezFetcher} />)

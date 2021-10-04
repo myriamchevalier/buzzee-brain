@@ -3,6 +3,7 @@ $body-bg: rgb(255, 255, 255);
 
 // Import Bootstrap and its default variables
 @import '~bootstrap/scss/bootstrap.scss';
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
 .btn-toolbar {
     display: flex;
@@ -17,4 +18,9 @@ width: 75%;
 }
 .card {
     border:#FDC500 solid 1px;
+}
+
+
+body{
+  font-family: 'Acme', sans-serif;
 }

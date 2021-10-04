@@ -2,12 +2,24 @@
 
 body{
     font-family: 'Patrick Hand', cursive;
+  
 }
-
+.bg-img{
+    background-image: url('./beezBack3.webp');
+    background-size: contain;
+    height: 100vh;
+}
+.landing__top {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    float: left;
+}
 .landing__title {
-    background-color:#FDC500 ;
+    background-color: #D389FB;
+    color:  #5C0099;
     border-radius: 40%;
-    margin: 2rem 0 0 5rem;
+    margin: 6rem 1rem;
     padding: 2rem;
     width: fit-content;
     font-size: 2rem;
@@ -18,7 +30,7 @@ body{
 .landing__numbers{
     background-color: #5C0099;
     color: #D389FB;
-    margin: 1.5rem 8rem;
+    margin: 1.5rem 1rem;
     width: fit-content;
     height: fit-content;
     border-radius: 40%;
@@ -28,16 +40,19 @@ body{
 
 .landing__options {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .landing__view {
     display: flex;
-    margin: 2rem 0 0 2rem;
-    padding: 4.5rem;
+    margin: 9rem 0 0 0;
+    padding: 3rem;
     align-items: center;
     text-decoration: none;
 }
+/* .landing__view:active {
+    
+} */
 
 .landing__viewtext {
     color: black;
@@ -45,10 +60,9 @@ body{
     text-align:center;
 }
 
+
 .landing__create {
-    background-color: #5C0099;
-    color: #D389FB;
-    margin: 6rem 6rem;
+    margin: 5rem 0 0 0 ;
     width: fit-content;
     height: fit-content;
     border-radius: 40%;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { FormControl, Form } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import './WhereBeeForm.css'
 
 export const WhereBeeForm = () => {
@@ -106,7 +106,7 @@ export const WhereBeeForm = () => {
         <>
             <h2>Out of the BuzzeeBrain, into the WhereBee</h2>
 
-            <Form style={{width: '500px'}}> 
+            <Form style={{width: '500px', marginLeft: '1rem'}}> 
                 <Form.Group>
                     <Form.Label htmlFor="item">Item/Document</Form.Label>
                     <Form.Control type="text"
@@ -116,20 +116,20 @@ export const WhereBeeForm = () => {
                 </Form.Group>
                 <Form.Group>
                     <Form.Label htmlFor="description">Description</Form.Label>
-                    <Form.Control type="text"
+                    <Form.Control as="textarea" rows={3}
                         id="description"
                         required
                         onChange={(event) => itemConstructor("description", event.target.value)} />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label htmlFor="where">Where is it?</Form.Label>
-                    <Form.Control type="text"
+                    <Form.Control as="textarea" rows={3}
                         id="location"
                         required
                         onChange={(event) => whereBeeConstructor("whereIs", event.target.value)} />
                 </Form.Group>
             </Form>
-            <button onClick={createWhereBee}>Submit</button>
+            <Button style={{backgroundColor:'#D389FB', borderColor:'#D389FB', color:'black', margin: '1rem'}}onClick={createWhereBee}>Submit</Button>
         </>
     )
 }

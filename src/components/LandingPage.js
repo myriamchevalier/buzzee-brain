@@ -5,6 +5,7 @@ import beehive from './images/Beehive.png';
 
 
 
+
 export const LandingPage = () => {
     const [whereBeez, setWhereBeez] = useState([])
     const [userHouseholds, setUserHouseholds] = useState([])
@@ -55,14 +56,16 @@ export const LandingPage = () => {
 
     return (
         <>
+        <section className="bg-img">
+            <section className="landing__top">
             <h1 className="landing__title">{foundUserHousehold?.name}'s BuzzeeHive</h1>
 
             <h3 className="landing__numbers">I have {whereBeezByUser.length} WhereBeez</h3>
-
+            </section>
             <section className="landing__options">
 
                 <Link to="./wherebeez" className="landing__view" >
-                    <div className="card bg-white border border-white" style={{width:'300px'}}>
+                    <div className="card bg-transparent border border-0" style={{width:'300px'}}>
                         <img src={beehive} className="card-img" alt="beehive" />
                         <div className="card-img-overlay">
                             <h5 className="card-title">View all {foundUserHousehold?.household?.name}'s WhereBeez</h5>
@@ -70,8 +73,8 @@ export const LandingPage = () => {
                     </div>
         
                 </Link>
-                <Link to="./wherebeez/create">
-                <div className="card bg-white border border-white" style={{width:'300px'}}>
+                <Link to="./wherebeez/create" className="landing__create">
+                <div className="card bg-transparent border border-0" style={{width:'300px'}}>
                         <img src={beehive} className="card-img" alt="beehive" />
                         <div className="card-img-overlay">
                             <h5 className="card-title">Create New WhereBee</h5>
@@ -80,6 +83,7 @@ export const LandingPage = () => {
 
                 </Link>
 
+            </section>
             </section>
         </>
     )

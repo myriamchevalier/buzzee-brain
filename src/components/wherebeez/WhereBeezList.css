@@ -4,7 +4,10 @@ body{
     font-family: 'Patrick Hand', cursive;
 }
 
-
+.whereBeez {
+    display: flex;
+    justify-content: space-around;
+}
 .wherebeez__title{
     background-color:#FDC500 ;
     border-radius: 40%;
